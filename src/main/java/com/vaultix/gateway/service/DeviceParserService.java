@@ -87,9 +87,9 @@ public class DeviceParserService {
                 return os;
             }
 
-            return (userAgent != null && userAgent.length() > 64)
-                    ? userAgent.substring(0, 64)
-                    : (userAgent != null ? userAgent : "Unknown");
+            return (userAgent != null && userAgent.length() > 256)
+                    ? userAgent.substring(0, 256)
+                    : (userAgent != null && !userAgent.isBlank() ? userAgent : "Unknown");
         } catch (Exception e) {
             log.debug("Failed to parse device info: {}", e.getMessage());
             return "Unknown";
