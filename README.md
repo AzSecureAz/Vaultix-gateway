@@ -122,4 +122,3 @@ gateway/
 ```
 
 Once launched, the gateway is available at [http://localhost:8085](http://localhost:8085).
-
