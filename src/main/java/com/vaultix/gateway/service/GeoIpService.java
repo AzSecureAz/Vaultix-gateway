@@ -34,7 +34,7 @@ public class GeoIpService implements AutoCloseable {
             .build();
 
     public GeoIpService(GeoIpProperties geoIpProperties) {
-        Path configuredPath = Paths.get(geoIpProperties.databasePath());
+        Path configuredPath = geoIpProperties.databasePath();
         DatabaseReader reader = null;
 
         if (Files.isRegularFile(configuredPath)) {
@@ -94,7 +94,7 @@ public class GeoIpService implements AutoCloseable {
             return "Unknown";
         }
 
-        return locationCache.get(ip.trim(), this::lookupLocation);
+        return locationCache.get(ip.strip(), this::lookupLocation);
     }
 
     private String lookupLocation(String ip) {
@@ -169,7 +169,7 @@ public class GeoIpService implements AutoCloseable {
                 }
             }
 
-            String result = fullLocation.toString().trim();
+            String result = fullLocation.toString().strip();
             return !result.isBlank() ? result : "Unknown";
         } catch (AddressNotFoundException e) {
             log.debug("IP address '{}' not found in GeoIP database", ip);

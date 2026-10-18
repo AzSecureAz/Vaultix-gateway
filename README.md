@@ -45,7 +45,7 @@ Client Request
 ### 1. Client Context Enrichment (`ClientContextFilter`)
 Intercepts incoming requests and decorates downstream headers using `ClientContextRequestWrapper`:
 - **`X-Client-IP`**: Resolves public client IP from `X-Forwarded-For` or `X-Real-IP`, discarding loopback and private RFC1918/RFC4193 addresses when proxy headers exist.
-- **`X-Device-Info`**: Parses browser and OS (e.g. `Chrome 122 on Windows`) via `DeviceParserService` with Caffeine caching and fallback up to 256 characters.
+- **`X-Device-Info`**: Parses browser and OS (e.g. `Chrome 122 on Windows`) via `DeviceParserService` with Caffeine caching and fallback to raw user agent.
 - **`X-Device-Location`**: Resolves location (e.g. `London, United Kingdom` or `Local / Private Network`) via `GeoIpService` backed by MaxMind `GeoLite2-City.mmdb` and Caffeine caching.
 
 ### 2. CORS Management (`CorsConfig`)

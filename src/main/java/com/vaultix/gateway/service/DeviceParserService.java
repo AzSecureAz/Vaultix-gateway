@@ -40,8 +40,8 @@ public class DeviceParserService {
             return "Unknown";
         }
 
-        String cacheKey = (userAgent != null ? userAgent.trim() : "") + "|"
-                + (secChUaPlatform != null ? secChUaPlatform.trim() : "");
+        String cacheKey = (userAgent != null ? userAgent.strip() : "") + "|"
+                + (secChUaPlatform != null ? secChUaPlatform.strip() : "");
 
         return deviceCache.get(cacheKey, k -> parseDevice(userAgent, secChUaPlatform));
     }
@@ -73,7 +73,7 @@ public class DeviceParserService {
             }
 
             if (secChUaPlatform != null && !secChUaPlatform.isBlank()) {
-                String cleanPlatform = secChUaPlatform.replace("\"", "").trim();
+                String cleanPlatform = secChUaPlatform.replace("\"", "").strip();
                 if (!cleanPlatform.isBlank()) {
                     os = cleanPlatform;
                 }
@@ -87,9 +87,7 @@ public class DeviceParserService {
                 return os;
             }
 
-            return (userAgent != null && userAgent.length() > 256)
-                    ? userAgent.substring(0, 256)
-                    : (userAgent != null && !userAgent.isBlank() ? userAgent : "Unknown");
+            return (userAgent != null && !userAgent.isBlank()) ? userAgent.strip() : "Unknown";
         } catch (Exception e) {
             log.debug("Failed to parse device info: {}", e.getMessage());
             return "Unknown";
