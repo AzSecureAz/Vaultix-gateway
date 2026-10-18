@@ -58,18 +58,18 @@ public class ClientContextFilter extends OncePerRequestFilter {
     private String resolveRealClientIp(HttpServletRequest request) {
         String cfConnectingIp = request.getHeader("CF-Connecting-IP");
         if (cfConnectingIp != null && !cfConnectingIp.isBlank()) {
-            return cfConnectingIp.trim();
+            return cfConnectingIp.strip();
         }
 
         String xForwardedFor = request.getHeader("X-Forwarded-For");
         if (xForwardedFor != null && !xForwardedFor.isBlank()) {
             int commaIndex = xForwardedFor.indexOf(',');
-            return (commaIndex != -1) ? xForwardedFor.substring(0, commaIndex).trim() : xForwardedFor.trim();
+            return (commaIndex != -1) ? xForwardedFor.substring(0, commaIndex).strip() : xForwardedFor.strip();
         }
 
         String xRealIp = request.getHeader("X-Real-IP");
         if (xRealIp != null && !xRealIp.isBlank()) {
-            return xRealIp.trim();
+            return xRealIp.strip();
         }
 
         return request.getRemoteAddr();
