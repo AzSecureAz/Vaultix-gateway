@@ -58,6 +58,9 @@ Imperative declarative routes forwarding requests to backend microservices using
 ### 4. Gzip Response Compression
 Native HTTP response compression enabled for responses exceeding 1KB (`application/json`, `text/plain`, `application/xml`).
 
+### 5. Platform-Wide Snake Case JSON (`SNAKE_CASE`)
+Enforces `spring.jackson.property-naming-strategy: SNAKE_CASE` across all gateway responses and error envelopes.
+
 ---
 
 ## Configuration Reference
