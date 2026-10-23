@@ -34,7 +34,7 @@ public class GeoIpService implements AutoCloseable {
             .build();
 
     public GeoIpService(GeoIpProperties geoIpProperties) {
-        Path configuredPath = geoIpProperties.databasePath();
+        Path configuredPath = Path.of(geoIpProperties.databasePath());
         DatabaseReader reader = null;
 
         if (Files.isRegularFile(configuredPath)) {
