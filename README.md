@@ -15,7 +15,17 @@ The single entry-point reverse proxy and API Gateway for the **Vaultix** microse
 
 ---
 
-## Core Capabilities & Pipeline
+## Documentation Index
+
+Detailed routing pipeline, filter architectures, and GeoIP enrichment designs are maintained in the [`docs/`](docs/) directory:
+
+| Document | Description |
+| :--- | :--- |
+| 📖 [**Architecture & Routing Pipeline**](docs/ARCHITECTURE.md) | In-depth breakdown of the client context enrichment pipeline (`ClientContextFilter`), MaxMind GeoLite2 integration, `ua-parser` device resolution, CORS management, Gzip compression, and dynamic Eureka load balancer routing. |
+
+---
+
+## Request Pipeline Architecture
 
 ```
 Client Request
@@ -41,25 +51,6 @@ Client Request
 │ Spring Cloud Gateway MVC│  -> lb://<service> via Eureka Service Discovery
 └─────────────────────────┘
 ```
-
-### 1. Client Context Enrichment (`ClientContextFilter`)
-Intercepts incoming requests and decorates downstream headers using `ClientContextRequestWrapper`:
-- **`X-Client-IP`**: Resolves public client IP from `X-Forwarded-For` or `X-Real-IP`, discarding loopback and private RFC1918/RFC4193 addresses when proxy headers exist.
-- **`X-Device-Info`**: Parses browser and OS (e.g. `Chrome 122 on Windows`) via `DeviceParserService` with Caffeine caching and fallback to raw user agent.
-- **`X-Device-Location`**: Resolves location (e.g. `London, United Kingdom` or `Local / Private Network`) via `GeoIpService` backed by MaxMind `GeoLite2-City.mmdb` and Caffeine caching.
-
-### 2. CORS Management (`CorsConfig`)
-Centralized cross-origin request handling configured dynamically through `vaultix.cors` properties, supporting pre-flight caching, wildcard headers, and cookie credentials.
-
-### 3. Dynamic Routing
-Imperative declarative routes forwarding requests to backend microservices using Eureka load balancer (`lb://`):
-- `/api/v1/auth/**` &rarr; `lb://authorization`
-
-### 4. Gzip Response Compression
-Native HTTP response compression enabled for responses exceeding 1KB (`application/json`, `text/plain`, `application/xml`).
-
-### 5. Platform-Wide Snake Case JSON (`SNAKE_CASE`)
-Enforces `spring.jackson.property-naming-strategy: SNAKE_CASE` across all gateway responses and error envelopes.
 
 ---
 
@@ -87,6 +78,8 @@ gateway/
 ├── pom.xml
 ├── README.md
 ├── .env.example
+├── docs/
+│   └── ARCHITECTURE.md
 └── src/main/
     ├── java/com/vaultix/gateway/
     │   ├── GatewayApplication.java
