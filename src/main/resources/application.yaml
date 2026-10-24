@@ -28,7 +28,7 @@ spring:
 
 vaultix:
   cors:
-    allowed-origins: ${VAULTIX_CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173}
+    allowed-origins: ${VAULTIX_CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173,https://zj153pc1-3000.inc1.devtunnels.ms}
     allowed-methods: ${VAULTIX_CORS_ALLOWED_METHODS:GET,POST,PUT,DELETE,PATCH,OPTIONS}
     allowed-headers: ${VAULTIX_CORS_ALLOWED_HEADERS:*}
     allow-credentials: ${VAULTIX_CORS_ALLOW_CREDENTIALS:true}
