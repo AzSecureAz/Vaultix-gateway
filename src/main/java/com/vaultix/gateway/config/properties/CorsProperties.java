@@ -30,6 +30,9 @@ public record CorsProperties(
         boolean allowCredentials,
         @PositiveOrZero(message = "Max age must be greater than or equal to 0")
         @DefaultValue("3600")
-        long maxAge) {
+        long maxAge,
+        @DefaultValue({"X-Sudo-Required"})
+        List<@NotBlank(message = "Exposed header cannot be blank")
+        @Size(max = 256, message = "Exposed header cannot exceed 256 characters") String> exposedHeaders) {
 
 }

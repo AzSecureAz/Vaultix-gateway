@@ -33,6 +33,7 @@ vaultix:
     allowed-headers: ${VAULTIX_CORS_ALLOWED_HEADERS:*}
     allow-credentials: ${VAULTIX_CORS_ALLOW_CREDENTIALS:true}
     max-age: ${VAULTIX_CORS_MAX_AGE:3600}
+    exposed-headers: ${VAULTIX_CORS_EXPOSED_HEADERS:X-Sudo-Required}
   geoip:
     database-path: ${VAULTIX_GEOIP_DATABASE_PATH:../infra/geoip/GeoLite2-City.mmdb}
 

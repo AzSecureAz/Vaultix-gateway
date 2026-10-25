@@ -24,6 +24,9 @@ public class CorsConfig {
         config.setAllowedHeaders(corsProperties.allowedHeaders());
         config.setAllowCredentials(corsProperties.allowCredentials());
         config.setMaxAge(corsProperties.maxAge());
+        if (corsProperties.exposedHeaders() != null && !corsProperties.exposedHeaders().isEmpty()) {
+            config.setExposedHeaders(corsProperties.exposedHeaders());
+        }
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
