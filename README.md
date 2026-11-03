@@ -108,7 +108,7 @@ gateway/
 | `VAULTIX_CORS_ALLOW_CREDENTIALS` | `true` | Allows cookies and Authorization headers |
 | `VAULTIX_CORS_MAX_AGE` | `3600` | Preflight cache lifetime in seconds |
 | `VAULTIX_CORS_EXPOSED_HEADERS` | `X-Sudo-Required` | Exposes step-up sudo response header to browser clients |
-| `VAULTIX_GEOIP_DATABASE_PATH` | `../infra/geoip/GeoLite2-City.mmdb` | Path to MaxMind GeoLite2-City database file |
+| `VAULTIX_GEOIP_DATABASE_PATH` | `../Vaultix-infra/geoip/GeoLite2-City.mmdb` | Path to MaxMind GeoLite2-City database file |
 
 ---
 
@@ -117,7 +117,7 @@ gateway/
 ### 1. Prerequisites
 - **Java 27** (OpenJDK / Amazon Corretto 27)
 - **Eureka Server** running on `http://localhost:8761`
-- **GeoLite2-City.mmdb** placed at `infra/geoip/GeoLite2-City.mmdb` (optional; falls back gracefully to `"Local"` or `"Unknown"` if missing)
+- **GeoLite2-City.mmdb** placed at `Vaultix-infra/geoip/GeoLite2-City.mmdb` (optional; falls back gracefully to `"Local"` or `"Unknown"` if missing)
 
 ### 2. Build
 ```powershell

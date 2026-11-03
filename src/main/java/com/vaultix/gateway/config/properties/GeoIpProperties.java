@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotBlank;
 @ConfigurationProperties(prefix = "vaultix.geoip")
 public record GeoIpProperties(
         @NotBlank(message = "GeoIP database path is required")
-        @DefaultValue("../infra/geoip/GeoLite2-City.mmdb")
+        @DefaultValue("../Vaultix-infra/geoip/GeoLite2-City.mmdb")
         String databasePath) {
 
 }

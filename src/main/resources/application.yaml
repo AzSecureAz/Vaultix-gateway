@@ -35,7 +35,7 @@ vaultix:
     max-age: ${VAULTIX_CORS_MAX_AGE:3600}
     exposed-headers: ${VAULTIX_CORS_EXPOSED_HEADERS:X-Sudo-Required}
   geoip:
-    database-path: ${VAULTIX_GEOIP_DATABASE_PATH:../infra/geoip/GeoLite2-City.mmdb}
+    database-path: ${VAULTIX_GEOIP_DATABASE_PATH:../Vaultix-infra/geoip/GeoLite2-City.mmdb}
 
 eureka:
   client:

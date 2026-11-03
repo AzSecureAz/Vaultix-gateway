@@ -162,7 +162,7 @@ private String resolveRealClientIp(HttpServletRequest request) {
 ### Geolocation Resolution (`GeoIpService`)
 * **MaxMind Integration**: Leverages MaxMind GeoIP2 Java API (`com.maxmind.geoip2:geoip2:5.2.0`) reading `GeoLite2-City.mmdb`.
 * **High-Concurrency Memory Caching**: Uses MaxMind's internal `CHMCache` (ConcurrentHashMap Cache) combined with a Caffeine L1 cache (10,000 entries, 24-hour TTL).
-* **Dual-Path Auto-Discovery**: Checks the primary path (`../infra/geoip/GeoLite2-City.mmdb`) and falls back automatically if run from a subfolder.
+* **Dual-Path Auto-Discovery**: Checks the primary path (`../Vaultix-infra/geoip/GeoLite2-City.mmdb`) and falls back automatically if run from a subfolder.
 * **Comprehensive Location String**:
   $$\text{City, Postal, State (Code), Country (Code) (Lat, Lon, Accuracy, Timezone)}$$
   * Example: `"Mumbai, 400001, Maharashtra (MH), India (IN) (Lat: 19.0760, Lon: 72.8777, Accuracy: 50km, Timezone: Asia/Kolkata)"`
@@ -255,4 +255,4 @@ Payloads larger than 1 KB are automatically compressed with Gzip, cutting JSON n
 | `VAULTIX_CORS_ALLOW_CREDENTIALS` | `true` | Allows credentials |
 | `VAULTIX_CORS_MAX_AGE` | `3600` | Preflight cache lifetime |
 | `VAULTIX_CORS_EXPOSED_HEADERS` | `X-Sudo-Required` | Exposed response headers |
-| `VAULTIX_GEOIP_DATABASE_PATH` | `../infra/geoip/GeoLite2-City.mmdb` | Location of GeoLite2-City database |
+| `VAULTIX_GEOIP_DATABASE_PATH` | `../Vaultix-infra/geoip/GeoLite2-City.mmdb` | Location of GeoLite2-City database |
